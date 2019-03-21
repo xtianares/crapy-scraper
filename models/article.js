@@ -4,13 +4,18 @@ let mongoose = require("mongoose"),
 let ArticleSchema = new Schema({
     title: {
         type: String,
-        required: true
+        required: true,
+        unique: true
     },
     url: {
         type: String,
         required: true
     },
     summary: {
+        type: String,
+        required: true
+    },
+    img: {
         type: String,
         required: true
     },

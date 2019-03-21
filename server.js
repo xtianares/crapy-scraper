@@ -22,8 +22,7 @@ var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/mongoHeadlines
 mongoose.connect(MONGODB_URI, { useNewUrlParser: true });
 
 //require routes for the application
-require("./routes/api.js")(app);
-require("./routes/html.js")(app);
+require("./routes")(app);
 
 app.listen(PORT, function(){
     console.log("Server listening on: http://localhost:" + PORT);
