@@ -1,61 +1,25 @@
 <main>
     <div class="container-fluid but-fixed">
         <div class="row d-flex justify-content-center mt-4">
-            <div class="col-md-8 col-lg-6">
-                <div class="card text-white bg-secondary mb-3">
-                    <h5 class="card-header">Create Your Own Burger</h5>
-                    <div class="card-body">
-                        <form class="create-burger" action="/api/create" method="POST">
-                            <div class="form-group">
-                                <label for="creator-name">Creator Name:</label>
-                                <input id="creator-name" class="form-control" type="text"  name="creatorName">
-                            </div>
-                            <div class="form-group">
-                                <label for="burger-name">Burger Name:</label>
-                                <input id="burger-name" class="form-control" type="text"  name="burgerName">
-                            </div>
-                            <div class="form-group d-flex justify-content-end mb-0">
-                                <button class="btn btn-light" type="submit">Create Burger</button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row d-flex justify-content-center mt-4">
             <div class="col-12 text-center">
-                <h1 class="mb-4 text-white">Awesome Burger Name!</h1>
+                <h1 class="mb-3 text-white">Scraped Articles</h1>
+                <h4 class="mb-5 text-white font-weight-light">A collection of articles scraped from Creative Bloq, an art and design inspiration.</h4>
             </div>
-            <div class="col-md-8 col-lg-6">
-                <div class="card mb-2">
-                    <h5 class="card-header">Available Burgers</h5>
-                    <ul class="list-group list-group-flush">
-                        {{#each burgers}}
-                            {{#unless this.devoured}}
-                                <!-- <li class="list-group-item d-flex align-items-center">{{this.id}}. {{this.burger_name}} <button class="btn btn-outline-primary btn-sm ml-auto" type="submit" data-id="{{this.id}}" >Devour it!</button></li> -->
-                                <li class="list-group-item d-flex align-items-center">
-                                    <span>{{this.burger_name}}<br><small class="text-muted font-weight-light ml-auto">Created by: {{this.Creator.creator_name}}</small></span>
-                                    <button class="btn btn-outline-primary btn-sm ml-auto show-modal" type="submit" data-id="{{this.id}}">Devour it!</button>
-                                </li>
-                            {{/unless}}
-                        {{/each}}
-                    </ul>
-                </div>
-            </div>
-            <div class="col-md-8 col-lg-6">
-                <div class="card md-2">
-                    <h5 class="card-header">Devoured Burgers</h5>
-                    <ul class="list-group list-group-flush">
-                        {{#each burgers}}
-                            {{#if this.devoured}}
-                                <!-- <li class="list-group-item d-flex align-items-center">{{this.id}}. {{this.burger_name}}</li> -->
-                                <li class="list-group-item d-flex align-items-center">
-                                    {{this.burger_name}}
-                                    <small class="text-muted font-weight-light ml-auto">Devoured by: {{this.Customer.customer_name}}</small>
-                                </li>
-                            {{/if}}
-                        {{/each}}
-                    </ul>
+            <div class="col-md-10 col-lg-12">
+                <div class="card-deck justify-content-center">
+                    {{#each article}}
+                        <div class="article card rounded-0 border-0">
+                            <div class="card-body">
+                                <a class="thumb" href="{{this.url}}" target="_blank" rel="noreferrer noopener" style="background-image: url({{this.img}});"></a>
+                                <h5><a href="{{this.url}}" target="_blank" rel="noreferrer noopener">{{this.title}}</a></h5>
+                                <p class="text-muted font-weight-light mb-0">{{this.summary}}</p>
+                            </div>
+                            <div class="card-footer text-right">
+                                <a class="card-link add-note" href="#" data-id="{{this._id}}"><small class="text-muted font-weight-light">Add Note</small></a>
+                                <a class="card-link save-article" href="#" data-id="{{this._id}}"><small class="text-muted font-weight-light">Save Article</small></a>
+                            </div>
+                        </div>
+                    {{/each}}
                 </div>
             </div>
         </div>

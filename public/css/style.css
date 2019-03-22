@@ -26,6 +26,46 @@ body {
     margin-top: 6px;
     margin-right: 10px;
 }
+.card-deck .card {
+    flex: 1 0 100%;
+}
+.card-deck .card img {
+    cursor: pointer;
+}
+.article.card {
+    text-decoration: none;
+    transition: box-shadow, transform linear 0.1s;
+    position: relative;
+}
+.article.card .card-body {
+    padding-left: calc(150px + 1.25rem );
+}
+.article.card .card-footer {
+    padding-top: 0;
+    padding-bottom: 1rem;
+    padding-left: calc(150px + 1.25rem );
+    border: 0;
+    background-color: transparent;
+}
+.article.card .card-body h5 {
+    color: inherit !important;
+}
+.article.card:hover {
+    text-decoration: none;
+    box-shadow: 0 .5rem 1rem rgba(0,0,0,.15);
+    transform: translateY(-3px) scale(1.01);
+}
+.article.card .thumb {
+    display: block;
+    width: 150px;
+    height: 100%;
+    background-size: cover;
+    background-position: 50% 50%;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
 /* ----------------------------------------------------------------------------
     Page Media Queries
 ----------------------------------------------------------------------------- */
@@ -34,12 +74,22 @@ body {
         padding-left: 30px;
         padding-right: 30px;
     }
+    .card-deck .card {
+        margin-left: 15px;
+        margin-right: 15px;
+        margin-bottom: 30px;
+        width: 100%;
+        max-width: calc(100% - 30px);
+    }
 
 }
 @media (min-width: 768px) {
 
 }
 @media (min-width: 992px) {
+    .card-deck .card {
+        max-width: calc(50% - 30px);
+    }
 
 }
 @media (min-width: 1200px) {

@@ -2,7 +2,7 @@ let mongoose = require("mongoose"),
     Schema = mongoose.Schema;
 
 let NoteSchema = new Schema({
-    title: {
+    user: {
         type: String,
         required: true
     },
