@@ -1,2 +1,2 @@
-# crapy-scraper
+# Crapy Scraper
 Mongo Scraper
