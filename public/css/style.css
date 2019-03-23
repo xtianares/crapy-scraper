@@ -38,16 +38,16 @@ body {
     position: relative;
 }
 .article.card .card-body {
-    padding-left: calc(150px + 1.25rem );
+    /* padding-left: calc(150px + 1.25rem ); */
 }
 .article.card .card-footer {
     padding-top: 0;
     padding-bottom: 1rem;
-    padding-left: calc(150px + 1.25rem );
+    /* padding-left: calc(150px + 1.25rem ); */
     border: 0;
     background-color: transparent;
 }
-.article.card .card-body h5 {
+.article.card .card-body h5 a {
     color: inherit !important;
 }
 .article.card:hover {
@@ -56,7 +56,7 @@ body {
     transform: translateY(-3px) scale(1.01);
 }
 .article.card .thumb {
-    display: block;
+    display: none;
     width: 150px;
     height: 100%;
     background-size: cover;
@@ -81,7 +81,15 @@ body {
         width: 100%;
         max-width: calc(100% - 30px);
     }
-
+    .article.card .card-body {
+        padding-left: calc(150px + 1.25rem );
+    }
+    .article.card .card-footer {
+        padding-left: calc(150px + 1.25rem );
+    }
+    .article.card .thumb {
+        display: block;
+    }
 }
 @media (min-width: 768px) {
 

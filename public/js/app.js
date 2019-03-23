@@ -1,4 +1,19 @@
 $(function(){
+    // scrape new articles
+    $('.remove-article').on('click', function(e){
+        e.preventDefault();
+        let query = '/api/unsave/' + $(this).data('id');
+        console.log(query);
+        $.ajax({
+            method: "GET",
+            url: query
+        })
+        .done(function(data) {
+            // Refresh the Window after the call is done
+            //console.log(data);
+            location.reload();
+        });
+    })
     // saving an article
     $('.save-article').on('click', function(e){
         e.preventDefault();
@@ -27,4 +42,4 @@ $(function(){
             location.reload();
         });
     })
-})
+});

@@ -9,8 +9,7 @@ module.exports = function(app) {
     app.get("/api/scrape", function (req, res) {
         axios.get("https://www.creativebloq.com/tag/web-design").then(function(response) {
             let $ = cheerio.load(response.data);
-
-            $(".listingResult.small").each(function(i, element) {
+            $($(".listingResult.small").get().reverse()).each(function(i, element) {
                 let result = {};
                 result.title = $(this).find(".article-name").text().trim();
                 result.url = $(this).find("a").attr("href");
@@ -26,10 +25,14 @@ module.exports = function(app) {
                         // If an error occurred, log it
                         console.log(err);
                     });
+                    // db.Article.create(result, function(error, data) {
+                    //     console.log(data);
+                    // });
                 }
             });
             // Send a message to the client
-            res.send("Scrape Complete");
+            // res.send("Scrape Complete");
+            res.redirect("/");
         });
     });
 
