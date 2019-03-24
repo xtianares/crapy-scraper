@@ -1,7 +1,7 @@
 # Crappy Scraper
 A NodeJS & MongoDB webapp that scrapes article data from Creative Bloq and allows users to add notes/comments about the articles. Users can also delete unwanted notes.
 
-Please check out the deployed working app at, [click here]: https://aqueous-sierra-80794.herokuapp.com/.
+Please check out the deployed working app at, [click here](https://aqueous-sierra-80794.herokuapp.com/).
 
 ###Functionality
 For the backend, the app uses expressJS to serve the routes and mongoose to interact with a MongoDB database.
