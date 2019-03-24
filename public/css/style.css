@@ -65,6 +65,33 @@ body {
     top: 0;
     left: 0;
 }
+.info-icon, .card-link {
+    display: inline-block;
+    vertical-align: middle;
+    line-height: 1;
+    color: #e99d52 !important;
+}
+.info-icon .material-icons {
+    margin-top: 4px;
+    margin-right: 10px;
+    font-size: 1.2rem !important;
+}
+.info-icon .note-icon {
+    margin-top: 4px;
+    margin-right: 0;
+    vertical-align: middle;
+}
+.info-icon .note-count {
+    display: inline-block;
+    vertical-align: middle;
+    line-height: 1;
+}
+.card-deck .card.add-notes {
+    margin-bottom: 10px;
+}
+.card-deck .card.add-notes + .card.add-notes {
+    margin-bottom: 30px;
+}
 
 /* ----------------------------------------------------------------------------
     Page Media Queries

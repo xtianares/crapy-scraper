@@ -30,7 +30,7 @@ module.exports = function(app) {
                     // });
                 }
             });
-            // Send a message to the client
+            // after scraping new articles rediect to homepage to display all articles
             // res.send("Scrape Complete");
             res.redirect("/");
         });
@@ -66,17 +66,33 @@ module.exports = function(app) {
         });
     });
 
-    // route for saving notes articles
+    // route for saving article notes
     app.post("/api/notes/:id", function (req, res) {
         // Create a new note and pass the req.body to the entry
         db.Note.create(req.body).then(function(dbNote) {
             console.log(dbNote);
-            return db.Article.findByIdAndUpdate(req.params.id, {$push: { "notes": dbNote._id }}, { new: true });
+            return db.Article.findByIdAndUpdate(req.params.id, {$push: { notes: dbNote._id }}, { new: true });
         })
         .then(function(dbArticle) {
-            // If we were able to successfully update an Article, send it back to the client
             // res.json(dbArticle);
             res.redirect("/notes/" + req.params.id );
+        })
+        .catch(function(err) {
+            // If an error occurred, send it to the client
+            res.json(err);
+        });
+    });
+
+    // route for deleting arrticle notes
+    app.post("/api/notes/:articleId/:noteId", function (req, res) {
+        // Create a new note and pass the req.body to the entry
+        db.Note.findByIdAndRemove(req.params.noteId).then(function(dbNote) {
+            console.log(dbNote);
+            return db.Article.findByIdAndUpdate(req.params.articleId, {$pull: { notes: req.params.noteId }}, { new: true });
+        })
+        .then(function(dbArticle) {
+            // res.json(dbArticle);
+            res.redirect("/notes/" + req.params.articleId );
         })
         .catch(function(err) {
             // If an error occurred, send it to the client
