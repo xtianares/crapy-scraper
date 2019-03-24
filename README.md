@@ -19,7 +19,6 @@ cd crappy-scraper
 npm install
 ```
 
-### Running Locally
 To start the local server run this command in your terminal/bash.
 
 ```
