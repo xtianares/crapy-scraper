@@ -66,4 +66,22 @@ module.exports = function(app) {
         });
     });
 
+    // route for saving notes articles
+    app.post("/api/notes/:id", function (req, res) {
+        // Create a new note and pass the req.body to the entry
+        db.Note.create(req.body).then(function(dbNote) {
+            console.log(dbNote);
+            return db.Article.findByIdAndUpdate(req.params.id, {$push: { "notes": dbNote._id }}, { new: true });
+        })
+        .then(function(dbArticle) {
+            // If we were able to successfully update an Article, send it back to the client
+            // res.json(dbArticle);
+            res.redirect("/notes/" + req.params.id );
+        })
+        .catch(function(err) {
+            // If an error occurred, send it to the client
+            res.json(err);
+        });
+    });
+
 };

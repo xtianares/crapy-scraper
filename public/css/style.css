@@ -98,6 +98,12 @@ body {
     .card-deck .card {
         max-width: calc(50% - 30px);
     }
+    .card-deck .card.notes {
+        max-width: calc(70% - 30px);
+    }
+    .card-deck .card.add-notes {
+        max-width: calc(60% - 30px);
+    }
 
 }
 @media (min-width: 1200px) {

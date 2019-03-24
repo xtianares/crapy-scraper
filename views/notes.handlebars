@@ -1,0 +1,54 @@
+<main>
+    <div class="container-fluid but-fixed">
+        <div class="row d-flex justify-content-center mt-4">
+            <!-- <div class="col-12 text-center">
+                <h1 class="mb-3 text-white">Article Notes</h1>
+                <h4 class="mb-5 text-white font-weight-light">A collection of notes for an aartile saved by users.</h4>
+            </div> -->
+            <div class="col-md-10 col-lg-12">
+                {{#if article}}
+                    <div class="card-deck justify-content-center">
+                        <div class="article notes card rounded-0 border-0">
+                            <div class="card-body">
+                                <a class="thumb" href="{{article.url}}" target="_blank" rel="noreferrer noopener" style="background-image: url({{article.img}});"></a>
+                                <h5><a href="{{article.url}}" target="_blank" rel="noreferrer noopener">{{article.title}}</a></h5>
+                                <p class="text-muted font-weight-light mb-0">{{article.summary}}</p>
+                            </div>
+                            <div class="card-footer text-right">
+                                <a class="card-link add-note" href="/notes/{{article._id}}" data-id="{{article._id}}"><small class="text-muted font-weight-light">Add Note</small></a>
+                                <a class="card-link remove-article" href="#" data-id="{{article._id}}"><small class="text-muted font-weight-light">Remove Article</small></a>
+                            </div>
+                        </div>
+                        {{#if article.notes}}
+                            {{#each article.notes}}
+                                {{this._id}}
+                                {{this.user}}
+                                {{this.body}}
+                            {{/each}}
+                        {{/if}}
+                        <div class="notes add-notes card rounded-0 border-0">
+                            <div class="card-header">Add Notes</div>
+                            <div class="card-body">
+                                <div class="form-group">
+                                    <label for="customer-name">What's Your Name?</label>
+                                    <input id="user-name" class="form-control" type="text" name="customerName">
+                                </div>
+                                <div class="form-group">
+                                    <label for="customer-name">Comment</label>
+                                    <textarea id="note-body" class="form-control" type="text" name="customerName" rows="4"></textarea>
+                                </div>
+                                <div class="form-group d-flex justify-content-end mb-0">
+                                    <button class="btn btn-primary add-article-note" type="button" data-id="{{article._id}}">Add Note</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {{else}}
+                    <div class="text-center">
+                        <p>Something went wrong...</p>
+                    </div>
+                {{/if}}
+            </div>
+        </div>
+    </div>
+</main>

@@ -30,15 +30,34 @@ module.exports = function(app) {
             res.json(err);
         });;
     });
+
     // route for saved articles page
     app.get("/saved", function (req, res) {
-        db.Article.find({ saved: true }, function(error, data) {
+        db.Article.find({ saved: true }, function(error, dbArticle) {
             var hbdata = {
                 pageTitle: "Saved Article",
-                article: data
+                article: dbArticle
             };
             console.log(hbdata);
             res.render("saved", hbdata);
+        });
+    });
+
+    // route for displaying articles with its corresponding notes
+    app.get("/notes/:id", function (req, res) {
+        // res.send('id: ' + req.params.id);
+        db.Article.findById(req.params.id).populate("notes").then(function(dbArticle) {
+            var hbdata = {
+                pageTitle: "Add Notes",
+                article: dbArticle
+            };
+            console.log(hbdata);
+            res.render("notes", hbdata);
+        })
+        .catch(function(err) {
+            // If an error occurred, log it
+            console.log(err);
+            res.json(err);
         });
     });
 

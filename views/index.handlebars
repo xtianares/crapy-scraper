@@ -6,8 +6,8 @@
                 <h4 class="mb-5 text-white font-weight-light">A collection of articles scraped from Creative Bloq, an art and design inspiration.</h4>
             </div>
             <div class="col-md-10 col-lg-12">
-                <div class="card-deck">
-                    {{#if article}}
+                {{#if article}}
+                    <div class="card-deck">
                         {{#each article}}
                             <div class="article card rounded-0 border-0">
                                 <div class="card-body">
@@ -16,15 +16,18 @@
                                     <p class="text-muted font-weight-light mb-0">{{this.summary}}</p>
                                 </div>
                                 <div class="card-footer text-right">
-                                    <a class="card-link add-note" href="#" data-id="{{this._id}}"><small class="text-muted font-weight-light">Add Note</small></a>
+                                    {{#if this.saved}}<small class="text-muted font-weight-light float-left">Saved</small>{{/if}}
+                                    <a class="card-link add-note" href="/notes/{{this._id}}" data-id="{{this._id}}"><small class="text-muted font-weight-light">Add Note</small></a>
                                     <a class="card-link save-article" href="#" data-id="{{this._id}}"><small class="text-muted font-weight-light">Save Article</small></a>
                                 </div>
                             </div>
                         {{/each}}
-                    {{else}}
+                    </div>
+                {{else}}
+                    <div class="text-center">
                         <a href="/api/scrape" class="btn btn-light btn-lg">Scrape New Articles</a>
-                    {{/if}}
-                </div>
+                    </div>
+                {{/if}}
             </div>
         </div>
     </div>
